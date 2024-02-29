@@ -21,12 +21,12 @@ public class CustomerController {
            path = "api/v1/customer",
            method = RequestMethod.GET
    )*/
-    @GetMapping("api/v1/customers")
+    @GetMapping("/api/v1/customers")
     public List<Customer> getCustomers() {
         return customerService.getAllCustomers();
     }
 
-    @GetMapping("api/v1/customers/{customerId}")
+    @GetMapping("/api/v1/customers/{customerId}")
     public Customer getCustomer(
             @PathVariable("customerId") Integer customerId) {
         return customerService.getCustomer(customerId);
