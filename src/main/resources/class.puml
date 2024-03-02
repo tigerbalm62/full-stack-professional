@@ -1,0 +1,18 @@
+@startuml
+class User {
+ -int number
+ -string name
+ +\~User()
+ +User
+ #display()
+}
+interface Snmp {
+ get()
+ set()
+ getNext()
+ getBulk()
+}
+
+Base <|-- User
+Snmp <-- User
+@enduml
