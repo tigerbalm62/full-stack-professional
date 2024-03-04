@@ -1,4 +1,5 @@
 package com.amigoscode.customer;
+import com.amigoscode.exception.ResourceNotFoundException;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -28,6 +29,15 @@ public class CustomerJPADataAccessService implements CustomerDao {
 
     @Override
     public boolean existsPersonWithEmail(String email) {
-        return customerRepository.existsByEmail(email);
+        return customerRepository.existsCustomerByEmail(email);
+    }
+
+    @Override
+    public boolean existsCustomerById(Integer id) {
+        return customerRepository.existsCustomerById(id);
+    }
+    @Override
+    public void deleteCustomerById(Integer id) {
+        customerRepository.deleteById(id);
     }
 }
