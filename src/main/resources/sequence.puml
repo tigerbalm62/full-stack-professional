@@ -4,7 +4,7 @@
 autonumber
 
 Alice -> Bob: Authentication Request
-Bob --> Alice: Authentication Response
+Bob --> Alice: Authentication Response success
 
 Alice -> Bob: Another authentication Request
 Alice <-- Bob: another authentication Response
