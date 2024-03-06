@@ -2,6 +2,7 @@ package com.amigoscode.customer;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.http.HttpStatus;
 
 import java.util.List;
 
@@ -32,6 +33,7 @@ public class CustomerController {
     }
 
     @PostMapping("")
+    @ResponseStatus(HttpStatus.CREATED)
     public void registerCustomer(@RequestBody CustomerRegistrationRequest request) {
         customerService.addCustomer(request);
     }
