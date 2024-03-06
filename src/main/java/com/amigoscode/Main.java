@@ -9,6 +9,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Scope;
+import com.github.javafaker.Faker;
+import java.util.Random;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -24,18 +26,17 @@ public class Main {
     @Bean
     CommandLineRunner runner(CustomerRepository customerRepository) {
         return args -> {
-            Customer alex = new Customer(
-                    "Alex",
-                    "alex@gmail.com",
-                    21
+            var faker = new Faker();
+            Random random = new Random();
+            String firstName = faker.name().firstName();
+            String lastName = faker.name().lastName();
+            Customer customer = new Customer(
+                    firstName + " " + lastName,
+                    firstName.toLowerCase() + "." +
+                    lastName.toLowerCase() +"@amigoscode.com",
+                    random.nextInt(16, 99)
             );
-            Customer jamila = new Customer(
-                    "Jamila",
-                    "jamila@gmail.com",
-                    19
-            );
-            List<Customer> customers = List.of(alex, jamila);
-            customerRepository.saveAll(customers);
+            customerRepository.save(customer);
         };
     }
 
