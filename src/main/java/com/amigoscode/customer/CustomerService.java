@@ -24,7 +24,7 @@ public class CustomerService {
     }
     public void addCustomer(CustomerRegistrationRequest customerRegistrationRequest) {
         // check if email exists
-        if (customerDao.existsPersonWithEmail(customerRegistrationRequest.email())) {
+        if (customerDao.existsCustomerWithEmail(customerRegistrationRequest.email())) {
             throw new DuplicateResourceException("email already taken");
         }
         Customer customer = new Customer(
@@ -59,7 +59,7 @@ public class CustomerService {
         }
 
         if (updateRequest.email() != null && !updateRequest.email().equals(customer.getEmail())) {
-            if (customerDao.existsPersonWithEmail(updateRequest.email())) {
+            if (customerDao.existsCustomerWithEmail(updateRequest.email())) {
                 throw new DuplicateResourceException(
                         "email already taken"
                 );
