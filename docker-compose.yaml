@@ -7,17 +7,28 @@ services:
       POSTGRES_PASSWORD: password
       PGDATA: /data/postgres
     volumes:
-      - postgres:/data/postgres
+      - db:/data/postgres
     ports:
       - "5332:5432"
     networks:
-      - postgres
+      - db
     restart: unless-stopped
 
+  full-stack-professional:
+    container_name: full-stack-professional
+    image: alvinchang1/full-stack-professional
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://db:5432/customer
+    ports:
+      - "8088:8080"
+    networks:
+      - db
+    depends_on:
+      - db
+    restart: unless-stopped
 networks:
-  postgres:
+  db:
     driver: bridge
 
 volumes:
-  postgres:
-  pgadmin:
+  db:
