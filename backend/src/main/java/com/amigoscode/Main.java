@@ -22,6 +22,7 @@ public class Main {
     public static void main(String[] args) {
        ConfigurableApplicationContext applicationContext =  SpringApplication.run(Main.class, args);
        //printBeans(applicationContext);
+
     }
     @Bean
     CommandLineRunner runner(CustomerRepository customerRepository) {
@@ -40,7 +41,7 @@ public class Main {
         };
     }
 
-    /*
+
     @Bean("foo")
     @Scope(value = ConfigurableBeanFactory.SCOPE_SINGLETON)
     // @RequestScope()
@@ -58,6 +59,6 @@ public class Main {
         }
     }
 
-     */
+
 
 }
